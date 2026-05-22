@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(docker exec jobcopilot-postgres *)",
+      "Bash(pkill -f \"uvicorn main:app\")",
+      "Bash(python -m uvicorn main:app --reload --port 8000)",
+      "Bash(curl -s -X POST http://localhost:8000/api/auth/register -H \"Content-Type: application/json\" -d \"{\\\\\"email\\\\\":\\\\\"test@example.com\\\\\",\\\\\"password\\\\\":\\\\\"123456\\\\\",\\\\\"display_name\\\\\":\\\\\"Test\\\\\"}\")",
+      "Bash(curl -s http://localhost:8000/api/health)",
+      "Bash(curl -s -X POST http://localhost:8000/api/auth/register -H \"Content-Type: application/json\" -d \"{\\\\\"email\\\\\":\\\\\"t2@example.com\\\\\",\\\\\"password\\\\\":\\\\\"123456\\\\\"}\")",
+      "Bash(python *)",
+      "Bash(powershell *)",
+      "Bash(netstat -ano)",
+      "Bash(curl *)",
+      "Bash(taskkill //F //IM python.exe)",
+      "Bash(npx next *)",
+      "Bash(pkill -f \"python.*uvicorn\")",
+      "Bash(pkill -f \"node.*next\")"
+    ]
+  }
+}
