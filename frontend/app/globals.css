@@ -1,0 +1,320 @@
+@import "tailwindcss";
+
+/* ── RawBlock Design Tokens ── */
+:root {
+  --color-black: #000000;
+  --color-white: #ffffff;
+  --color-blue: #0000ff;
+  --color-success: #008000;
+  --color-warning: #ffa500;
+  --color-error: #ff0000;
+  --color-surface: #ffffff;
+  --color-surface-sunken: #f0f0f0;
+  --color-border: #000000;
+  --color-border-light: #cccccc;
+  --color-text-primary: #000000;
+  --color-text-secondary: #555555;
+  --color-text-inverse: #ffffff;
+  --border-thin: 1px;
+  --border-default: 3px;
+  --border-heavy: 5px;
+  --font-heading: "Archivo Black", "Noto Sans SC", sans-serif;
+  --font-body: "Work Sans", "Noto Sans SC", sans-serif;
+  --font-mono: "Space Mono", "Courier New", monospace;
+}
+
+.dark {
+  --color-black: #ffffff;
+  --color-white: #000000;
+  --color-surface: #000000;
+  --color-surface-sunken: #1a1a1a;
+  --color-border: #ffffff;
+  --color-border-light: #444444;
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #aaaaaa;
+  --color-text-inverse: #000000;
+}
+/* dark-mode note: values swap black↔white, pure inversion. */
+
+@theme inline {
+  --color-black: var(--color-black);
+  --color-white: var(--color-white);
+  --color-blue: var(--color-blue);
+  --color-success: var(--color-success);
+  --color-warning: var(--color-warning);
+  --color-error: var(--color-error);
+  --color-surface: var(--color-surface);
+  --color-surface-sunken: var(--color-surface-sunken);
+  --color-border: var(--color-border);
+  --color-border-light: var(--color-border-light);
+  --color-text-primary: var(--color-text-primary);
+  --color-text-secondary: var(--color-text-secondary);
+  --color-text-inverse: var(--color-text-inverse);
+  --font-heading: var(--font-heading);
+  --font-body: var(--font-body);
+  --font-mono: var(--font-mono);
+}
+
+/* ── Base ── */
+body {
+  background-color: var(--color-white);
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── RawBlock Typography ── */
+h1 {
+  font-family: var(--font-heading);
+  font-size: 64px;
+  line-height: 1;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+}
+h2 {
+  font-family: var(--font-heading);
+  font-size: 48px;
+  line-height: 1.05;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+h3 {
+  font-family: var(--font-heading);
+  font-size: 32px;
+  line-height: 1.1;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+h4 {
+  font-family: var(--font-body);
+  font-size: 22px;
+  line-height: 1.2;
+  font-weight: 600;
+}
+
+/* ── Animations ── */
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-slide-up { animation: slide-up 0.25s ease-out; }
+
+/* ── Buttons ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.075em;
+  border-radius: 0;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-decoration: none;
+  line-height: 1;
+}
+.btn:disabled { cursor: not-allowed; }
+
+.btn-primary {
+  background: var(--color-black);
+  color: var(--color-white);
+  border: 3px solid var(--color-black);
+}
+.btn-primary:hover:not(:disabled) {
+  background: var(--color-white);
+  color: var(--color-black);
+}
+.btn-primary:active:not(:disabled) {
+  background: var(--color-black);
+  color: var(--color-white);
+  border-width: 5px;
+}
+.btn-primary:disabled {
+  background: var(--color-surface-sunken);
+  color: var(--color-text-secondary);
+  border-color: var(--color-border-light);
+}
+
+.btn-secondary {
+  background: var(--color-white);
+  color: var(--color-black);
+  border: 3px solid var(--color-black);
+}
+.btn-secondary:hover:not(:disabled) {
+  background: var(--color-black);
+  color: var(--color-white);
+}
+.btn-secondary:active:not(:disabled) { border-width: 5px; }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--color-text-primary);
+  border: none;
+  text-decoration: none;
+}
+.btn-ghost:hover:not(:disabled) {
+  text-decoration: underline;
+  color: var(--color-blue);
+}
+
+.btn-danger {
+  background: var(--color-error);
+  color: var(--color-white);
+  border: 3px solid var(--color-black);
+}
+.btn-danger:hover:not(:disabled) {
+  background: var(--color-black);
+  color: var(--color-error);
+}
+
+.btn-sm { padding: 6px 16px; font-size: 12px; height: 32px; }
+.btn-md { padding: 10px 24px; font-size: 14px; height: 44px; }
+.btn-lg { padding: 16px 40px; font-size: 18px; height: 56px; }
+
+/* ── Cards ── */
+.card {
+  background: var(--color-white);
+  border: 3px solid var(--color-black);
+  border-radius: 0;
+  padding: 24px;
+}
+.card-elevated { border-width: 5px; }
+
+/* ── Inputs ── */
+.input {
+  background: var(--color-surface-sunken);
+  color: var(--color-text-primary);
+  border: 3px solid var(--color-black);
+  border-radius: 0;
+  padding: 10px 12px;
+  font-family: var(--font-mono);
+  font-size: 15px;
+  line-height: 1.5;
+  width: 100%;
+  outline: none;
+  transition: border-width 0.1s ease;
+}
+.input:hover { background: #e8e8e8; }
+.dark .input:hover { background: #222222; }
+.input:focus { border-width: 5px; }
+.input.error { border-color: var(--color-error); }
+.input:disabled {
+  border-color: var(--color-border-light);
+  background: #f5f5f5;
+}
+
+/* Hide browser native password reveal */
+.password-masked {
+  -webkit-text-security: disc;
+  -moz-text-security: disc;
+  text-security: disc;
+}
+
+/* Password visibility toggle */
+.password-wrap { position: relative; }
+.password-toggle {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px 12px;
+  font-family: var(--font-heading);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-secondary);
+  transition: color 0.15s;
+}
+.password-toggle:hover { color: var(--color-black); }
+
+/* ── Labels ── */
+.label {
+  font-family: var(--font-heading);
+  font-size: 14px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-primary);
+  margin-bottom: 4px;
+  display: block;
+}
+
+/* ── Helper / Error ── */
+.helper-text {
+  font-family: var(--font-body);
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--color-text-secondary);
+  margin-top: 4px;
+}
+.error-text {
+  color: var(--color-error);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  border: 2px solid var(--color-error);
+  padding: 8px 12px;
+  margin-top: 4px;
+}
+
+/* ── Chips ── */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  background: var(--color-white);
+  color: var(--color-black);
+  border: 2px solid var(--color-black);
+  border-radius: 0;
+  padding: 2px 10px;
+  font-family: var(--font-heading);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.075em;
+  line-height: 1.4;
+}
+.chip-active {
+  background: var(--color-black);
+  color: var(--color-white);
+}
+
+/* ── Divider ── */
+.divider {
+  border: none;
+  border-top: 3px solid var(--color-black);
+  margin: 0;
+}
+
+/* ── Links ── */
+a:not(.btn) {
+  color: var(--color-black);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+a:not(.btn):hover { text-decoration-thickness: 3px; }
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-white);
+  border: 1px solid var(--color-black);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-black);
+  border-radius: 0;
+}
+
+/* ── Selection ── */
+::selection {
+  background: var(--color-black);
+  color: var(--color-white);
+}
