@@ -13,6 +13,7 @@ venv/
 # Next.js
 .next/
 out/
+frontend/.next/
 
 # IDE
 .idea/
